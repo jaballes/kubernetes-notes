@@ -1,3 +1,17 @@
 # Instructions
 
-Follow the link in order to install the cluster with Virtual Box
+- Install Virtual Box
+- Download Debian image and use it to install each virtual machine
+- In order to install the cluster with Virtual Box, follow the link:
+    https://medium.com/@mojabi.rafi/create-a-kubernetes-cluster-using-virtualbox-and-without-vagrant-90a14d791617
+- When configuring the network for each node, make sure to configure the static IP using the following:
+  - Open file `/etc/network/interfaces`
+  - One of the network interfaces should be DHCP. Use the other one e.g. enp0s8 and add the following
+    ```
+    auto enp0s8 
+    iface enp0s8 inet static
+    address 192.168.60.11
+    network 192.168.60.0
+    netmask 255.255.255.0
+    ```
+  - Save the file and restart the network: `systemctl restart networking`
