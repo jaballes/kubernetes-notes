@@ -15,3 +15,10 @@
     netmask 255.255.255.0
     ```
   - Save the file and restart the network: `systemctl restart networking`
+- Once the nodes are up and running, install `openssh-server`
+  - Steps:
+    - `apt-get update`
+    - If there are errors in the repositories, modify file `/etc/apt/sources.list` and rerun `apt-get update`
+    - `apt-get install openssh-server`
+    - Make sure ssh is installed correctly by running `systemctl status ssh`
+  This will allow to ssh into the VMs without using VirtualBox terminals
