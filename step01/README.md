@@ -21,4 +21,6 @@
     - If there are errors in the repositories, modify file `/etc/apt/sources.list` and rerun `apt-get update`
     - `apt-get install openssh-server`
     - Make sure ssh is installed correctly by running `systemctl status ssh`
-  This will allow to ssh into the VMs without using VirtualBox terminals
+  This will allow to ssh into the VMs without using VirtualBox terminals.
+- Once the infrastructure is ready, as especified in the instructions, we need to install kubeadm and kubelet. The link provides instructions to install an old version from Kubernetes Xenial repo but as of the writting of these instructions, it is recomended to install from the community supported repo for Debian like systems. Follow the link https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl for instructions
+
