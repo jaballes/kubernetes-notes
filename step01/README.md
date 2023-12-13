@@ -23,4 +23,13 @@
     - Make sure ssh is installed correctly by running `systemctl status ssh`
   This will allow to ssh into the VMs without using VirtualBox terminals.
 - Once the infrastructure is ready, as especified in the instructions, we need to install kubeadm and kubelet. The link provides instructions to install an old version from Kubernetes Xenial repo but as of the writting of these instructions, it is recomended to install from the community supported repo for Debian like systems. Follow the link https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl for instructions
-
+  - In this instalation, we do the following on all nodes:
+    ```
+      apt-get install -y apt-transport-https ca-certificates curl gpg
+      mkdir /etc/apt/keyrings
+      curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+      echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
+      apt-get update
+      apt-get install -y kubelet kubeadm kubectl
+      apt-mark hold kubelet kubeadm kubectl
+    ```
