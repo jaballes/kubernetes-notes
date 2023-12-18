@@ -45,4 +45,18 @@
     apt-get update
     apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     ```
+- After Docker is installed, the guide recommends changing docker cgroup, given that initially it will not be systemd
+  ```
+  docker info | grep -i cgroup
+  cat <<EOF | tee /etc/docker/daemon.json
+  { "exec-opts": ["native.cgroupdriver=systemd"],
+    "log-driver": "json-file",
+    "log-opts": {"max-size": "100m"},
+    "storage-driver": "overlay2"
+  }
+  EOF
+  systemctl restart docker
+  systemctl status docker
+  docker info | grep -i cgroup
+  ```
 
