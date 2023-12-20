@@ -59,4 +59,8 @@
   systemctl status docker
   docker info | grep -i cgroup
   ```
-
+- At some point, you need to disable the swap:
+  ```
+  cat /proc/swaps  # this has the list of swaps enabled
+  ``` 
+  Comment out the line under `/etc/fstab` where the type is swap and reboot
